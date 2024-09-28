@@ -78,6 +78,38 @@
         
     </div>
 
-    <script src="script.js"></script>
+    <script >
+        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const department = document.getElementById('department').value;
+    const employeeId = document.getElementById('employeeId').value;
+    const profilePic = document.getElementById('profilePic').value;
+
+    // Add to employee list
+    const employeeList = document.getElementById('employeeList');
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<a href="#">${name} (${email})</a>`;
+    employeeList.appendChild(listItem);
+
+    // Add to employee details table
+    const employeeDetailsTable = document.getElementById('employeeDetailsTable');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${name}</td>
+        <td>${employeeId}</td>
+        <td>${department}</td>
+        <td><img src="${profilePic}" alt="${name}'s profile picture" width="50"></td>
+    `;
+    employeeDetailsTable.appendChild(row);
+
+    // Clear form fields
+    document.getElementById('employeeForm').reset();
+});
+
+    </script>
 </body>
 </html>
